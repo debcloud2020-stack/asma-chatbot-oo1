@@ -1,0 +1,277 @@
+/* ========================================
+   ASMA Agent — Custom Theme
+   ======================================== */
+
+/* Color palette */
+:root {
+    --asma-primary: #6366f1;
+    --asma-primary-dark: #4f46e5;
+    --asma-accent: #ec4899;
+    --asma-bg: #0f172a;
+    --asma-surface: #1e293b;
+    --asma-text: #f1f5f9;
+    --asma-muted: #94a3b8;
+    --asma-success: #10b981;
+}
+
+/* Background gradient */
+.stApp {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+    background-attachment: fixed;
+}
+
+/* Hide Streamlit default chrome */
+#MainMenu, footer, header {visibility: hidden;}
+
+/* ===== Hero Header ===== */
+.asma-hero {
+    background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+    padding: 2rem 2rem 1.5rem 2rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: heroIn 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.asma-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes heroIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, 20px); }
+}
+
+.asma-logo {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+
+.asma-logo .dot {
+    color: #fbbf24;
+    animation: pulse 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+.asma-tagline {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.05rem;
+    margin-top: 0.3rem;
+    font-weight: 400;
+}
+
+.asma-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(16, 185, 129, 0.2);
+    color: #6ee7b7;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.8rem;
+    border: 1px solid rgba(110, 231, 183, 0.3);
+}
+
+.asma-status .dot-live {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px #10b981; }
+    50% { opacity: 0.4; box-shadow: 0 0 4px #10b981; }
+}
+
+/* ===== Chat messages ===== */
+[data-testid="stChatMessage"] {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1rem 1.25rem;
+    margin: 0.5rem 0;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    animation: msgIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+@keyframes msgIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+[data-testid="stChatMessage"] p, [data-testid="stChatMessage"] li {
+    color: #f1f5f9 !important;
+}
+
+/* User message styling */
+[data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(236, 72, 153, 0.15) 100%);
+    border-color: rgba(236, 72, 153, 0.3);
+}
+
+/* ===== Chat input ===== */
+[data-testid="stChatInput"] {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+[data-testid="stChatInput"] textarea {
+    color: #f1f5f9 !important;
+    font-size: 1rem;
+}
+
+/* ===== Quick action buttons ===== */
+.stButton > button {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+    color: #e0e7ff !important;
+    border: 1px solid rgba(99, 102, 241, 0.4) !important;
+    border-radius: 12px !important;
+    padding: 0.6rem 1rem !important;
+    font-weight: 500 !important;
+    transition: all 0.25s ease !important;
+    width: 100%;
+    text-align: left !important;
+}
+
+.stButton > button:hover {
+    background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%) !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4) !important;
+    border-color: transparent !important;
+}
+
+.stButton > button:active {
+    transform: translateY(0);
+}
+
+/* ===== Sidebar ===== */
+[data-testid="stSidebar"] {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+[data-testid="stSidebar"] * {
+    color: #e0e7ff !important;
+}
+
+/* Section labels */
+.asma-section {
+    color: #a5b4fc !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 1rem 0 0.5rem 0;
+}
+
+/* Sidebar profile card */
+.asma-profile {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+    padding: 1.2rem;
+    border-radius: 14px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.asma-avatar {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+    border-radius: 50%;
+    margin: 0 auto 0.7rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.asma-name {
+    color: white !important;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.asma-role {
+    color: #a5b4fc !important;
+    font-size: 0.8rem;
+}
+
+/* Typing indicator */
+.asma-typing {
+    display: inline-flex;
+    gap: 4px;
+    padding: 0.5rem 0;
+}
+
+.asma-typing span {
+    width: 8px;
+    height: 8px;
+    background: #a5b4fc;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out;
+}
+
+.asma-typing span:nth-child(1) { animation-delay: 0s; }
+.asma-typing span:nth-child(2) { animation-delay: 0.2s; }
+.asma-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-8px); opacity: 1; }
+}
+
+/* Sliders */
+.stSlider [data-baseweb="slider"] > div > div {
+    background: linear-gradient(90deg, #6366f1, #ec4899) !important;
+}
+
+/* Empty state */
+.asma-welcome {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #cbd5e1;
+}
+
+.asma-welcome h3 {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
